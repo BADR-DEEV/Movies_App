@@ -4,6 +4,7 @@ import 'package:built_value/iso_8601_date_time_serializer.dart';
 import 'package:built_value/serializer.dart';
 import 'package:built_value/standard_json_plugin.dart';
 import 'package:movieapp/core/models/actor/actor.dart';
+import 'package:movieapp/core/models/rental_duration/rental_duration.dart';
 import 'package:movieapp/core/models/running_time/running_time.dart';
 
 import '/core/models/post/post.dart';
@@ -19,6 +20,7 @@ part 'serializers.g.dart';
   Movie,
   Actor,
   RunningTime,
+  RentalDuration,
   Post,
 ])
 

@@ -18,7 +18,8 @@ class CustomerMainView extends StatefulWidget {
 class _CustomerMainViewState extends State<CustomerMainView> {
   final _views = [
     FadeIn(child: MoviesListView()),
-    FadeIn(child: ActorsListView())];
+    FadeIn(child: ActorsListView())
+  ];
 
   @override
   void dispose() {

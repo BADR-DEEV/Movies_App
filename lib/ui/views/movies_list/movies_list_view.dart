@@ -107,8 +107,7 @@ class _MoviesListViewState extends State<MoviesListView>
                       Expanded(
                         child: Container(
                           child: PagedMoviesListView({},
-                              onMoviesClicked: (move) {}
-                          ),
+                              onMoviesClicked: (movie) {}),
                         ),
                       )
                     ],

@@ -3,7 +3,6 @@ import 'package:flutter/foundation.dart';
 class Constants {
   static const bool isDebugModeOn = !kReleaseMode;
 
-
   //settings
   static const bool isHttpLogON = true;
 
@@ -19,6 +18,4 @@ class Constants {
   static const String DEFAULT_PAGINATE = '20';
 
   static const int LOGO_FILE_TYPE = 1;
-
-
 }

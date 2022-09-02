@@ -20,13 +20,16 @@ class MovieTile extends StatelessWidget {
       onModelReady: (model) => model.init(movie),
       builder: (context, model, child) => InkWell(
         onTap: () async {
-          model.moveToMovieViewRoute(context);
+          var title = model.movie?.title != null ? model.movie?.title : "null";
+          model.moveToMovieViewRoute(title ?? "", context);
+          print(title);
+          // print("did it worked");
         },
         child: Card(
           elevation: 2,
           margin: EdgeInsets.all(8),
           child: Container(
-            height: MediaQuery.of(context).size.height / 7,
+            height: MediaQuery.of(context).size.height / 6,
             child: Row(
               children: [
                 Expanded(
@@ -59,9 +62,11 @@ class MovieTile extends StatelessWidget {
                                 ),
                               ),
                               UIHelper.horizontalSpaceSmall(),
-                              Text('(2022)'),
+                              Text(
+                                  ("${model.movie?.release_date != null ? movie.release_date!.substring(0, 4) : "Unknown"}")),
                             ],
                           ),
+                          UIHelper.verticalSpaceSmall(),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
@@ -69,17 +74,18 @@ class MovieTile extends StatelessWidget {
                                 'Thriler',
                                 style: TextStyle(),
                               ),
-                              UIHelper.horizontalSpaceSmall(),
+                              UIHelper.horizontalSpaceLarge(),
                             ],
                           ),
-                          UIHelper.horizontalSpaceLarge(),
+                          UIHelper.verticalSpaceMedium(),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Expanded(
                                   child: Text(
-                                'The aging patriarch of an organized crime dynasty in postwar New York City transfers control of his clandestine empire to his reluctant youngest son.',
-                                maxLines: 3,
+                                model.movie?.description ??
+                                    "no specified description",
+                                maxLines: 2,
                                 overflow: TextOverflow.ellipsis,
                                 style: TextStyle(),
                               )),

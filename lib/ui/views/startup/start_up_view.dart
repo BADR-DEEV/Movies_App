@@ -4,7 +4,7 @@ import 'package:stacked/stacked.dart';
 
 import '../../../core/constant/asset_images.dart';
 import '/ui/views/startup/start_up_view_model.dart';
-import '/ui/widgets/stateless/app_logo.dart';
+// import '/ui/widgets/stateless/app_logo.dart';
 
 class StartUpView extends StatelessWidget {
   @override
@@ -23,7 +23,7 @@ class StartUpView extends StatelessWidget {
                 Container(),
                 Container(
                   child: Image.asset(
-                    AssetImages.logo_png,
+                    AssetImages.birdy,
                     height: 250,
                     width: 250,
                   ),

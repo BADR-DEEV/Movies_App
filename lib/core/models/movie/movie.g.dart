@@ -33,6 +33,20 @@ class _$MovieSerializer implements StructuredSerializer<Movie> {
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
+    value = object.description;
+    if (value != null) {
+      result
+        ..add('description')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.release_date;
+    if (value != null) {
+      result
+        ..add('release_date')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
     value = object.img;
     if (value != null) {
       result
@@ -47,19 +61,19 @@ class _$MovieSerializer implements StructuredSerializer<Movie> {
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    value = object.description;
-    if (value != null) {
-      result
-        ..add('description')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(String)));
-    }
     value = object.is_disabled;
     if (value != null) {
       result
         ..add('is_disabled')
         ..add(
             serializers.serialize(value, specifiedType: const FullType(bool)));
+    }
+    value = object.rental_duration;
+    if (value != null) {
+      result
+        ..add('rental_duration')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(RentalDuration)));
     }
     value = object.running_time;
     if (value != null) {
@@ -68,10 +82,57 @@ class _$MovieSerializer implements StructuredSerializer<Movie> {
         ..add(serializers.serialize(value,
             specifiedType: const FullType(RunningTime)));
     }
+    value = object.rating;
+    if (value != null) {
+      result
+        ..add('rating')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.rental_rate;
+    if (value != null) {
+      result
+        ..add('rental_rate')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
+    value = object.box_office;
+    if (value != null) {
+      result
+        ..add('box_office')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.damage_cost;
+    if (value != null) {
+      result
+        ..add('damage_cost')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
+    value = object.fulltext;
+    if (value != null) {
+      result
+        ..add('fulltext')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.genre;
+    if (value != null) {
+      result
+        ..add('genre')
+        ..add(
+            serializers.serialize(value, specifiedType: const FullType(Genre)));
+    }
     value = object.created_at;
     if (value != null) {
       result
         ..add('created_at')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(DateTime)));
+    }
+    value = object.updated_at;
+    if (value != null) {
+      result
+        ..add('updated_at')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(DateTime)));
     }
@@ -97,6 +158,14 @@ class _$MovieSerializer implements StructuredSerializer<Movie> {
           result.title = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
+        case 'description':
+          result.description = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'release_date':
+          result.release_date = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
         case 'img':
           result.img = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
@@ -105,20 +174,49 @@ class _$MovieSerializer implements StructuredSerializer<Movie> {
           result.thumb = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
-        case 'description':
-          result.description = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String?;
-          break;
         case 'is_disabled':
           result.is_disabled = serializers.deserialize(value,
               specifiedType: const FullType(bool)) as bool?;
+          break;
+        case 'rental_duration':
+          result.rental_duration.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(RentalDuration))!
+              as RentalDuration);
           break;
         case 'running_time':
           result.running_time.replace(serializers.deserialize(value,
               specifiedType: const FullType(RunningTime))! as RunningTime);
           break;
+        case 'rating':
+          result.rating = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'rental_rate':
+          result.rental_rate = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int?;
+          break;
+        case 'box_office':
+          result.box_office = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'damage_cost':
+          result.damage_cost = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int?;
+          break;
+        case 'fulltext':
+          result.fulltext = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'genre':
+          result.genre.replace(serializers.deserialize(value,
+              specifiedType: const FullType(Genre))! as Genre);
+          break;
         case 'created_at':
           result.created_at = serializers.deserialize(value,
+              specifiedType: const FullType(DateTime)) as DateTime?;
+          break;
+        case 'updated_at':
+          result.updated_at = serializers.deserialize(value,
               specifiedType: const FullType(DateTime)) as DateTime?;
           break;
       }
@@ -134,17 +232,35 @@ class _$Movie extends Movie {
   @override
   final String? title;
   @override
+  final String? description;
+  @override
+  final String? release_date;
+  @override
   final String? img;
   @override
   final String? thumb;
   @override
-  final String? description;
-  @override
   final bool? is_disabled;
+  @override
+  final RentalDuration? rental_duration;
   @override
   final RunningTime? running_time;
   @override
+  final String? rating;
+  @override
+  final int? rental_rate;
+  @override
+  final String? box_office;
+  @override
+  final int? damage_cost;
+  @override
+  final String? fulltext;
+  @override
+  final Genre? genre;
+  @override
   final DateTime? created_at;
+  @override
+  final DateTime? updated_at;
 
   factory _$Movie([void Function(MovieBuilder)? updates]) =>
       (new MovieBuilder()..update(updates))._build();
@@ -152,12 +268,21 @@ class _$Movie extends Movie {
   _$Movie._(
       {this.id,
       this.title,
+      this.description,
+      this.release_date,
       this.img,
       this.thumb,
-      this.description,
       this.is_disabled,
+      this.rental_duration,
       this.running_time,
-      this.created_at})
+      this.rating,
+      this.rental_rate,
+      this.box_office,
+      this.damage_cost,
+      this.fulltext,
+      this.genre,
+      this.created_at,
+      this.updated_at})
       : super._();
 
   @override
@@ -173,12 +298,21 @@ class _$Movie extends Movie {
     return other is Movie &&
         id == other.id &&
         title == other.title &&
+        description == other.description &&
+        release_date == other.release_date &&
         img == other.img &&
         thumb == other.thumb &&
-        description == other.description &&
         is_disabled == other.is_disabled &&
+        rental_duration == other.rental_duration &&
         running_time == other.running_time &&
-        created_at == other.created_at;
+        rating == other.rating &&
+        rental_rate == other.rental_rate &&
+        box_office == other.box_office &&
+        damage_cost == other.damage_cost &&
+        fulltext == other.fulltext &&
+        genre == other.genre &&
+        created_at == other.created_at &&
+        updated_at == other.updated_at;
   }
 
   @override
@@ -188,13 +322,40 @@ class _$Movie extends Movie {
             $jc(
                 $jc(
                     $jc(
-                        $jc($jc($jc(0, id.hashCode), title.hashCode),
-                            img.hashCode),
-                        thumb.hashCode),
-                    description.hashCode),
-                is_disabled.hashCode),
-            running_time.hashCode),
-        created_at.hashCode));
+                        $jc(
+                            $jc(
+                                $jc(
+                                    $jc(
+                                        $jc(
+                                            $jc(
+                                                $jc(
+                                                    $jc(
+                                                        $jc(
+                                                            $jc(
+                                                                $jc(
+                                                                    $jc(
+                                                                        0,
+                                                                        id
+                                                                            .hashCode),
+                                                                    title
+                                                                        .hashCode),
+                                                                description
+                                                                    .hashCode),
+                                                            release_date
+                                                                .hashCode),
+                                                        img.hashCode),
+                                                    thumb.hashCode),
+                                                is_disabled.hashCode),
+                                            rental_duration.hashCode),
+                                        running_time.hashCode),
+                                    rating.hashCode),
+                                rental_rate.hashCode),
+                            box_office.hashCode),
+                        damage_cost.hashCode),
+                    fulltext.hashCode),
+                genre.hashCode),
+            created_at.hashCode),
+        updated_at.hashCode));
   }
 
   @override
@@ -202,12 +363,21 @@ class _$Movie extends Movie {
     return (newBuiltValueToStringHelper(r'Movie')
           ..add('id', id)
           ..add('title', title)
+          ..add('description', description)
+          ..add('release_date', release_date)
           ..add('img', img)
           ..add('thumb', thumb)
-          ..add('description', description)
           ..add('is_disabled', is_disabled)
+          ..add('rental_duration', rental_duration)
           ..add('running_time', running_time)
-          ..add('created_at', created_at))
+          ..add('rating', rating)
+          ..add('rental_rate', rental_rate)
+          ..add('box_office', box_office)
+          ..add('damage_cost', damage_cost)
+          ..add('fulltext', fulltext)
+          ..add('genre', genre)
+          ..add('created_at', created_at)
+          ..add('updated_at', updated_at))
         .toString();
   }
 }
@@ -223,6 +393,14 @@ class MovieBuilder implements Builder<Movie, MovieBuilder> {
   String? get title => _$this._title;
   set title(String? title) => _$this._title = title;
 
+  String? _description;
+  String? get description => _$this._description;
+  set description(String? description) => _$this._description = description;
+
+  String? _release_date;
+  String? get release_date => _$this._release_date;
+  set release_date(String? release_date) => _$this._release_date = release_date;
+
   String? _img;
   String? get img => _$this._img;
   set img(String? img) => _$this._img = img;
@@ -231,13 +409,15 @@ class MovieBuilder implements Builder<Movie, MovieBuilder> {
   String? get thumb => _$this._thumb;
   set thumb(String? thumb) => _$this._thumb = thumb;
 
-  String? _description;
-  String? get description => _$this._description;
-  set description(String? description) => _$this._description = description;
-
   bool? _is_disabled;
   bool? get is_disabled => _$this._is_disabled;
   set is_disabled(bool? is_disabled) => _$this._is_disabled = is_disabled;
+
+  RentalDurationBuilder? _rental_duration;
+  RentalDurationBuilder get rental_duration =>
+      _$this._rental_duration ??= new RentalDurationBuilder();
+  set rental_duration(RentalDurationBuilder? rental_duration) =>
+      _$this._rental_duration = rental_duration;
 
   RunningTimeBuilder? _running_time;
   RunningTimeBuilder get running_time =>
@@ -245,9 +425,37 @@ class MovieBuilder implements Builder<Movie, MovieBuilder> {
   set running_time(RunningTimeBuilder? running_time) =>
       _$this._running_time = running_time;
 
+  String? _rating;
+  String? get rating => _$this._rating;
+  set rating(String? rating) => _$this._rating = rating;
+
+  int? _rental_rate;
+  int? get rental_rate => _$this._rental_rate;
+  set rental_rate(int? rental_rate) => _$this._rental_rate = rental_rate;
+
+  String? _box_office;
+  String? get box_office => _$this._box_office;
+  set box_office(String? box_office) => _$this._box_office = box_office;
+
+  int? _damage_cost;
+  int? get damage_cost => _$this._damage_cost;
+  set damage_cost(int? damage_cost) => _$this._damage_cost = damage_cost;
+
+  String? _fulltext;
+  String? get fulltext => _$this._fulltext;
+  set fulltext(String? fulltext) => _$this._fulltext = fulltext;
+
+  GenreBuilder? _genre;
+  GenreBuilder get genre => _$this._genre ??= new GenreBuilder();
+  set genre(GenreBuilder? genre) => _$this._genre = genre;
+
   DateTime? _created_at;
   DateTime? get created_at => _$this._created_at;
   set created_at(DateTime? created_at) => _$this._created_at = created_at;
+
+  DateTime? _updated_at;
+  DateTime? get updated_at => _$this._updated_at;
+  set updated_at(DateTime? updated_at) => _$this._updated_at = updated_at;
 
   MovieBuilder();
 
@@ -256,12 +464,21 @@ class MovieBuilder implements Builder<Movie, MovieBuilder> {
     if ($v != null) {
       _id = $v.id;
       _title = $v.title;
+      _description = $v.description;
+      _release_date = $v.release_date;
       _img = $v.img;
       _thumb = $v.thumb;
-      _description = $v.description;
       _is_disabled = $v.is_disabled;
+      _rental_duration = $v.rental_duration?.toBuilder();
       _running_time = $v.running_time?.toBuilder();
+      _rating = $v.rating;
+      _rental_rate = $v.rental_rate;
+      _box_office = $v.box_office;
+      _damage_cost = $v.damage_cost;
+      _fulltext = $v.fulltext;
+      _genre = $v.genre?.toBuilder();
       _created_at = $v.created_at;
+      _updated_at = $v.updated_at;
       _$v = null;
     }
     return this;
@@ -288,17 +505,31 @@ class MovieBuilder implements Builder<Movie, MovieBuilder> {
           new _$Movie._(
               id: id,
               title: title,
+              description: description,
+              release_date: release_date,
               img: img,
               thumb: thumb,
-              description: description,
               is_disabled: is_disabled,
+              rental_duration: _rental_duration?.build(),
               running_time: _running_time?.build(),
-              created_at: created_at);
+              rating: rating,
+              rental_rate: rental_rate,
+              box_office: box_office,
+              damage_cost: damage_cost,
+              fulltext: fulltext,
+              genre: _genre?.build(),
+              created_at: created_at,
+              updated_at: updated_at);
     } catch (_) {
       late String _$failedField;
       try {
+        _$failedField = 'rental_duration';
+        _rental_duration?.build();
         _$failedField = 'running_time';
         _running_time?.build();
+
+        _$failedField = 'genre';
+        _genre?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             r'Movie', _$failedField, e.toString());

@@ -17,10 +17,7 @@ abstract class RunningTime implements Built<RunningTime, RunningTimeBuilder> {
   int? get hours;
   int? get minutes;
 
-
   RunningTime._();
-
-
 
   String toJson() {
     return json.encode(serializers.serializeWith(RunningTime.serializer, this));
@@ -42,5 +39,6 @@ abstract class RunningTime implements Built<RunningTime, RunningTimeBuilder> {
 
   static Serializer<RunningTime> get serializer => _$runningTimeSerializer;
 
-  factory RunningTime([void Function(RunningTimeBuilder)? updates]) = _$RunningTime;
+  factory RunningTime([void Function(RunningTimeBuilder)? updates]) =
+      _$RunningTime;
 }

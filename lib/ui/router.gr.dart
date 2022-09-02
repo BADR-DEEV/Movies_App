@@ -138,7 +138,8 @@ class ActorsListViewRoute extends _i9.PageRouteInfo<void> {
 /// generated route for
 /// [_i6.MovieView]
 class MovieViewRoute extends _i9.PageRouteInfo<void> {
-  const MovieViewRoute() : super(MovieViewRoute.name, path: '/movie-view');
+  const MovieViewRoute({required title})
+      : super(MovieViewRoute.name, path: '/movie-view');
 
   static const String name = 'MovieViewRoute';
 }

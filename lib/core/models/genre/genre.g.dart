@@ -32,20 +32,6 @@ class _$GenreSerializer implements StructuredSerializer<Genre> {
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    value = object.img;
-    if (value != null) {
-      result
-        ..add('img')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(String)));
-    }
-    value = object.thumb;
-    if (value != null) {
-      result
-        ..add('thumb')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(String)));
-    }
     value = object.created_at;
     if (value != null) {
       result
@@ -82,14 +68,6 @@ class _$GenreSerializer implements StructuredSerializer<Genre> {
           result.name = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
-        case 'img':
-          result.img = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String?;
-          break;
-        case 'thumb':
-          result.thumb = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String?;
-          break;
         case 'created_at':
           result.created_at = serializers.deserialize(value,
               specifiedType: const FullType(DateTime)) as DateTime?;
@@ -111,10 +89,6 @@ class _$Genre extends Genre {
   @override
   final String? name;
   @override
-  final String? img;
-  @override
-  final String? thumb;
-  @override
   final DateTime? created_at;
   @override
   final DateTime? updated_at;
@@ -122,14 +96,7 @@ class _$Genre extends Genre {
   factory _$Genre([void Function(GenreBuilder)? updates]) =>
       (new GenreBuilder()..update(updates))._build();
 
-  _$Genre._(
-      {this.id,
-      this.name,
-      this.img,
-      this.thumb,
-      this.created_at,
-      this.updated_at})
-      : super._();
+  _$Genre._({this.id, this.name, this.created_at, this.updated_at}) : super._();
 
   @override
   Genre rebuild(void Function(GenreBuilder) updates) =>
@@ -144,8 +111,6 @@ class _$Genre extends Genre {
     return other is Genre &&
         id == other.id &&
         name == other.name &&
-        img == other.img &&
-        thumb == other.thumb &&
         created_at == other.created_at &&
         updated_at == other.updated_at;
   }
@@ -153,10 +118,7 @@ class _$Genre extends Genre {
   @override
   int get hashCode {
     return $jf($jc(
-        $jc(
-            $jc($jc($jc($jc(0, id.hashCode), name.hashCode), img.hashCode),
-                thumb.hashCode),
-            created_at.hashCode),
+        $jc($jc($jc(0, id.hashCode), name.hashCode), created_at.hashCode),
         updated_at.hashCode));
   }
 
@@ -165,8 +127,6 @@ class _$Genre extends Genre {
     return (newBuiltValueToStringHelper(r'Genre')
           ..add('id', id)
           ..add('name', name)
-          ..add('img', img)
-          ..add('thumb', thumb)
           ..add('created_at', created_at)
           ..add('updated_at', updated_at))
         .toString();
@@ -184,14 +144,6 @@ class GenreBuilder implements Builder<Genre, GenreBuilder> {
   String? get name => _$this._name;
   set name(String? name) => _$this._name = name;
 
-  String? _img;
-  String? get img => _$this._img;
-  set img(String? img) => _$this._img = img;
-
-  String? _thumb;
-  String? get thumb => _$this._thumb;
-  set thumb(String? thumb) => _$this._thumb = thumb;
-
   DateTime? _created_at;
   DateTime? get created_at => _$this._created_at;
   set created_at(DateTime? created_at) => _$this._created_at = created_at;
@@ -207,8 +159,6 @@ class GenreBuilder implements Builder<Genre, GenreBuilder> {
     if ($v != null) {
       _id = $v.id;
       _name = $v.name;
-      _img = $v.img;
-      _thumb = $v.thumb;
       _created_at = $v.created_at;
       _updated_at = $v.updated_at;
       _$v = null;
@@ -233,12 +183,7 @@ class GenreBuilder implements Builder<Genre, GenreBuilder> {
   _$Genre _build() {
     final _$result = _$v ??
         new _$Genre._(
-            id: id,
-            name: name,
-            img: img,
-            thumb: thumb,
-            created_at: created_at,
-            updated_at: updated_at);
+            id: id, name: name, created_at: created_at, updated_at: updated_at);
     replace(_$result);
     return _$result;
   }

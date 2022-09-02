@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:movieapp/core/models/movie/movie.dart';
 import 'package:stacked/stacked.dart';
 
@@ -13,7 +12,8 @@ class MovieTileViewModel extends BaseViewModel {
     this.movie = movie;
   }
 
-  Future<void> moveToMovieViewRoute(BuildContext context) async {
-    await locator<NavigationService>().pushNamed(MovieViewRoute(), context);
+  Future<void> moveToMovieViewRoute(dynamic title, context) async {
+    await locator<NavigationService>()
+        .pushNamed(MovieViewRoute(title: title), context);
   }
 }

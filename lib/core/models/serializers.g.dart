@@ -11,6 +11,7 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(Genre.serializer)
       ..add(Movie.serializer)
       ..add(Post.serializer)
+      ..add(RentalDuration.serializer)
       ..add(RunningTime.serializer))
     .build();
 

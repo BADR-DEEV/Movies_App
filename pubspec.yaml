@@ -43,8 +43,8 @@ flutter_icons:
   android: "ic_launcher"
   ios: true
   remove_alpha_ios: true
-  image_path_android: "assets/images/logo_ios.png"
-  image_path_ios: "assets/images/logo_ios.png"
+  image_path_android: "assets/images/birdy2.png"
+  image_path_ios: "assets/images/birdy2.png"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

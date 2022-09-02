@@ -13,15 +13,9 @@ part 'genre.g.dart';
 ///     receive from an API
 ///
 
-
 abstract class Genre implements Built<Genre, GenreBuilder> {
   int? get id;
-
   String? get name;
-
-  String? get img;
-  String? get thumb;
-
   DateTime? get created_at;
   DateTime? get updated_at;
 
@@ -49,4 +43,3 @@ abstract class Genre implements Built<Genre, GenreBuilder> {
 
   factory Genre([void Function(GenreBuilder)? updates]) = _$Genre;
 }
-

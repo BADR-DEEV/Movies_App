@@ -2,7 +2,9 @@ import 'dart:convert';
 
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
+import 'package:movieapp/core/models/rental_duration/rental_duration.dart';
 
+import '../genre/genre.dart';
 import '../running_time/running_time.dart';
 import '/core/models/serializers.dart';
 
@@ -15,21 +17,23 @@ part 'movie.g.dart';
 ///
 
 abstract class Movie implements Built<Movie, MovieBuilder> {
-
   String? get id; // uuid
-
   String? get title;
-
+  String? get description;
+  String? get release_date;
   String? get img;
   String? get thumb;
-
-  String? get description;
-
   bool? get is_disabled;
-
+  RentalDuration? get rental_duration;
   RunningTime? get running_time;
-
+  String? get rating;
+  int? get rental_rate;
+  String? get box_office;
+  int? get damage_cost;
+  String? get fulltext;
+  Genre? get genre;
   DateTime? get created_at;
+  DateTime? get updated_at;
 
   Movie._();
 
